@@ -3,14 +3,20 @@ import classes from "./Burger.module.css";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const Burger = (props) => {
-  const ingredientsComponentsArr = Object.keys(props.ingredients).map(
-    (igKey) => {
+  let ingredientsComponentsArr = Object.keys(props.ingredients)
+    .map((igKey) => {
       return [...Array(props.ingredients[igKey])].map((_, i) => {
         return <BurgerIngredient key={igKey + i} type={igKey} />;
       });
-    }
-  );
-  console.log(ingredientsComponentsArr);
+    })
+    .flat();
+
+  ingredientsComponentsArr =
+    ingredientsComponentsArr.length === 0 ? (
+      <p>Please choose ingredients</p>
+    ) : (
+      ingredientsComponentsArr
+    );
 
   return (
     <div className={classes.Burger}>
