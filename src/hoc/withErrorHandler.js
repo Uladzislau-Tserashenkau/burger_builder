@@ -4,7 +4,7 @@ import Aux from "./ax";
 
 const withErrorHandler = (WrappedComponent, axios) => {
   return class extends Component {
-    state = { error: null };
+    state = { error: null, loading: false };
 
     errorConfirmedHandler = () => {
       this.setState({
@@ -12,30 +12,46 @@ const withErrorHandler = (WrappedComponent, axios) => {
       });
     };
 
+    componentWillUnmount() {
+      axios.interceptors.request.eject(this.reqInterceptor);
+      axios.interceptors.response.eject(this.resInterceptor);
+    }
+
     componentDidMount() {
-      axios.interceptors.request.use((request) => {
-        this.setState({
-          error: null,
+      this.reqInterceptor = axios.interceptors.request.use((request) => {
+        this.setState(() => {
+          return {
+            loading: true,
+            error: null,
+          };
         });
+
         return request;
       });
-      axios.interceptors.response.use(
-        (response) => response,
+
+      this.resInterceptor = axios.interceptors.response.use(
+        (response) => {
+          this.setState({ loading: false });
+          return response;
+        },
         (error) => {
-          this.setState({ error: error });
+          this.setState(() => {
+            return { error: error, loading: false };
+          });
         }
       );
     }
+
     render() {
       return (
         <Aux>
           <Modal
-            show={this.state.error}
+            show={this.state.error !== null}
             modalClosed={this.errorConfirmedHandler}
           >
             {this.state.error ? this.state.error.message : null}
           </Modal>
-          <WrappedComponent {...this.props} />
+          {this.state.loading ? null : <WrappedComponent {...this.props} />}
         </Aux>
       );
     }
