@@ -38,6 +38,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
           this.setState(() => {
             return { error: error, loading: false };
           });
+          return Promise.reject(error);
         }
       );
     }
