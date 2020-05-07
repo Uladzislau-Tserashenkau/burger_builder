@@ -10,6 +10,15 @@
   margin-bottom: 8px;
 }
 
+.Invalid {
+  background-color: salmon !important;
+  border: 1px solid darkred !important;
+}
+
+.Invalid::placeholder {
+  color: #fff;
+}
+
 .InputElement {
   outline: none;
   border: 1px solid #ccc;
