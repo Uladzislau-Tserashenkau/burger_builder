@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Input from "../../../components/UI/Input/Input";
 import { withRouter } from "react-router-dom";
 import Spinner from "../../../components/UI/Spinner/Spinner";
@@ -114,6 +115,7 @@ class ContactData extends Component {
 
   orderHandler = (e) => {
     e.preventDefault();
+
     this.setState({ loading: true });
     const formData = {};
     for (let formElementIdentifier in this.state.orderForm) {
@@ -121,8 +123,9 @@ class ContactData extends Component {
         formElementIdentifier
       ].value;
     }
+
     const order = {
-      ingredients: this.props.ingredients,
+      ingredients: this.props.ings,
       price: this.props.price.toFixed(2),
       orderData: formData,
     };
@@ -179,4 +182,11 @@ class ContactData extends Component {
   }
 }
 
-export default withRouter(ContactData);
+const mapStateToProps = (state) => {
+  return {
+    ings: state.ingredients,
+    price: state.totalPrice,
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(ContactData));
