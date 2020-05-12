@@ -25,7 +25,6 @@ const withErrorHandler = (WrappedComponent, axios) => {
             error: null,
           };
         });
-
         return request;
       });
 
