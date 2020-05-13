@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import axios from "../../axios-orders";
 import * as burgerBuilderActions from "../../store/actions/index";
+import axios from "../../axios-orders";
 import withErrorHandler from "../../hoc/withErrorHandler";
 import { connect } from "react-redux";
 import Aux from "../../hoc/ax";
@@ -13,20 +13,9 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 class BurgerBuilder extends Component {
   state = {
     purchasing: false,
-    loading: false,
-    error: false,
   };
 
-  componentDidMount() {
-    axios
-      .get("https://food-builder-34606.firebaseio.com/ingredients.json")
-      .then((response) => {
-        this.setState({ ingredients: response.data });
-      })
-      .catch((err) => {
-        this.setState({ error: true });
-      });
-  }
+  componentDidMount() {}
 
   purchaseHandler = () => {
     this.setState({ purchasing: true });
@@ -77,9 +66,7 @@ class BurgerBuilder extends Component {
           />
         </Aux>
       );
-      orderSummary = this.state.loading ? (
-        <Spinner />
-      ) : (
+      orderSummary = (
         <OrderSummary
           purchaseClosed={this.purchaseCloseHandler}
           purchaseContinued={this.purchaseContinueHandler}

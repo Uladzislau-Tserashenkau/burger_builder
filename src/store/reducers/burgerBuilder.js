@@ -1,9 +1,9 @@
 import * as actionTypes from "../actions/actionTypes";
-import Input from "../../components/UI/Input/Input";
 
 const initialState = {
-  ingredients: { salad: 0, cheese: 0, bacon: 0, meat: 0 },
+  ingredients: null,
   totalPrice: 4,
+  error: false,
 };
 
 const INGREDIENT_PRICES = {
