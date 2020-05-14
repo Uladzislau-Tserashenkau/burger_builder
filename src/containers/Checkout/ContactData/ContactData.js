@@ -6,6 +6,8 @@ import Spinner from "../../../components/UI/Spinner/Spinner";
 import Button from "../../../components/UI/Button/Button";
 import axios from "../../../axios-orders";
 import classes from "./ContactData.module.css";
+import withErrorHandler from "../../../hoc/withErrorHandler";
+import * as actions from "../../../store/actions/index";
 
 class ContactData extends Component {
   state = {
@@ -116,7 +118,6 @@ class ContactData extends Component {
   orderHandler = (e) => {
     e.preventDefault();
 
-    this.setState({ loading: true });
     const formData = {};
     for (let formElementIdentifier in this.state.orderForm) {
       formData[formElementIdentifier] = this.state.orderForm[
@@ -129,15 +130,16 @@ class ContactData extends Component {
       price: this.props.price.toFixed(2),
       orderData: formData,
     };
-    axios
-      .post("/orders.json", order)
-      .then((response) => {
-        this.setState({ loading: false });
-        this.props.history.push("/");
-      })
-      .catch((err) => {
-        this.setState({ loading: false });
-      });
+    this.props.onOrderBurger(order);
+    // axios
+    //   .post("/orders.json", order)
+    //   .then((response) => {
+    //     this.setState({ loading: false });
+    //     this.props.history.push("/");
+    //   })
+    //   .catch((err) => {
+    //     this.setState({ loading: false });
+    //   });
   };
 
   render() {
@@ -189,4 +191,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(ContactData));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onOrderBurger: (orderData) => {
+      dispatch(actions.purchaseBurgerStart(orderData));
+    },
+  };
+};
+
+export default connect(mapStateToProps)(
+  withErrorHandler(withRouter(ContactData), axios)
+);
