@@ -55,16 +55,12 @@ export const auth = (mail, password, isSignUp) => {
         dispatch(checkAuthTimeout(res.data.expiresIn));
       })
       .catch((err) => {
-        // console.log(err);
-
         dispatch(authFail(err.response.data.error));
       });
   };
 };
 
 export const setAuthRedirectPath = (path) => {
-  console.log(path, "PATH");
-
   return {
     type: actionTypes.SET_AUTH_REDIRECT_PATH,
     path: path,
