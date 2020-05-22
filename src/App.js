@@ -25,8 +25,8 @@ const App = (props) => {
     <Switch>
       <Route
         path="/auth"
-        render={() => {
-          return <Auth />;
+        render={(props) => {
+          return <Auth {...props} />;
         }}
       />
       <Route path="/" exact component={BurgerBuilder} />
@@ -39,21 +39,21 @@ const App = (props) => {
       <Switch>
         <Route
           path="/checkout"
-          render={() => {
-            return <Checkout />;
+          render={(props) => {
+            return <Checkout {...props} />;
           }}
         />
         <Route
           path="/orders"
-          render={() => {
-            return <Orders />;
+          render={(props) => {
+            return <Orders {...props} />;
           }}
         />
         <Route path="/logout" component={Logout} />
         <Route
           path="/auth"
-          render={() => {
-            return <Auth />;
+          render={(props) => {
+            return <Auth {...props} />;
           }}
         />
 
