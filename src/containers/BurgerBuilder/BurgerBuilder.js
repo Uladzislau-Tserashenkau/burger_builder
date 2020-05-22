@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as actions from "../../store/actions/index";
 import axios from "../../axios-orders";
 import withErrorHandler from "../../hoc/withErrorHandler";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import Aux from "../../hoc/ax";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
@@ -12,10 +12,10 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 
 const BurgerBuilder = (props) => {
   const [purchasing, setPurchasing] = useState(false);
-
+  const { onInitIngredients } = props;
   useEffect(() => {
-    props.onInitIngredients();
-  }, []);
+    onInitIngredients();
+  }, [onInitIngredients]);
 
   const purchaseHandler = () => {
     if (props.isAuthenticated) {
