@@ -15,7 +15,7 @@ const BurgerBuilder = (props) => {
 
   useEffect(() => {
     props.onInitIngredients();
-  }, [props]);
+  }, []);
 
   const purchaseHandler = () => {
     if (props.isAuthenticated) {

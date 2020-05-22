@@ -7,7 +7,7 @@ export const authStart = () => {
   };
 };
 
-export const authSuccess = ({ idToken, localId }) => {
+export const authSuccess = (idToken, localId) => {
   return { type: actionTypes.AUTH_SUCCESS, idToken, userId: localId };
 };
 
@@ -36,6 +36,7 @@ export const auth = (mail, password, isSignUp) => {
   return (dispatch) => {
     dispatch(authStart());
     const authData = { email: mail, password, returnSecureToken: true };
+
     let url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCLGWjng25srVJW5kLYd4Y1ube27q0U1Cs";
     if (!isSignUp) {
@@ -51,10 +52,13 @@ export const auth = (mail, password, isSignUp) => {
         localStorage.setItem("token", res.data.idToken);
         localStorage.setItem("expirationDate", expirationDate);
         localStorage.setItem("userId", res.data.localId);
-        dispatch(authSuccess(res.data));
+        dispatch(authSuccess(res.data.idToken, res.data.localId));
+
         dispatch(checkAuthTimeout(res.data.expiresIn));
       })
       .catch((err) => {
+        console.log(err.message, "ERROR");
+
         dispatch(authFail(err.response.data.error));
       });
   };
@@ -80,6 +84,7 @@ export const authCheckState = () => {
       } else {
         const userId = localStorage.getItem("userId");
         dispatch(authSuccess(token, userId));
+
         dispatch(
           checkAuthTimeout(
             (expirationDate.getTime() - new Date().getTime()) / 1000

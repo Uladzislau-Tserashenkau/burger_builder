@@ -17,6 +17,8 @@ const reducer = (oldState = initialState, action) => {
         loading: true,
       };
     case actionTypes.AUTH_SUCCESS:
+      console.log("id token , userID", action.idToken, action.userId);
+
       return {
         token: action.idToken,
         userId: action.userId,
