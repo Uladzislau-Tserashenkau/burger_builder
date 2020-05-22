@@ -23,7 +23,12 @@ const App = (props) => {
 
   let routes = (
     <Switch>
-      <Route path="/auth" component={asyncAuth} />
+      <Route
+        path="/auth"
+        render={() => {
+          return <Auth />;
+        }}
+      />
       <Route path="/" exact component={BurgerBuilder} />
       <Redirect to="/" />
     </Switch>
