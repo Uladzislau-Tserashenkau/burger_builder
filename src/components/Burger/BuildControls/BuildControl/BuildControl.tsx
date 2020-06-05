@@ -1,7 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import classes from "./BuildControl.module.css";
 
-const BuildControl = (props) => {
+type Props = {
+  label: String;
+  removed: () => void;
+  disabled: boolean;
+  added: () => void;
+};
+
+const BuildControl = (props: Props): JSX.Element => {
   return (
     <div className={classes.BuildControl}>
       <div className={classes.Label}>{props.label}</div>

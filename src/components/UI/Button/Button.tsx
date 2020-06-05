@@ -1,7 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import classes from "./Button.module.css";
 
-const Button = (props) => {
+type Props = {
+  disabled: boolean;
+  clicked: () => void;
+  btnType: string;
+  children: ReactNode;
+};
+
+const Button = (props: Props) => {
   return (
     <button
       disabled={props.disabled}
