@@ -2,23 +2,33 @@ import React from "react";
 import "./BuildControls.scss";
 import BuildControl from "./BuildControl/BuildControl";
 
-const controls = [
+type Props = {
+  isAuth: boolean;
+  price: number;
+  ingredientAdded: (a: string) => void;
+  ingredientRemoved: (a: string) => void;
+  disabled: object[];
+  ordered: boolean;
+  purchasable: boolean;
+};
+
+const controls: { type: string }[] = [
   { type: "salad" },
   { type: "meat" },
   { type: "cheese" },
   { type: "bacon" },
 ];
 
-const BuildControls = (props) => {
+const BuildControls = (props: Props): ReactNode => {
   return (
     <div className={"build-controls"}>
       <p>
         Current price: <strong> {props.price.toFixed(2)}$ </strong>
       </p>
-      {controls.map((ctrl) => (
+      {controls.map((ctrl: { type: string }) => (
         <BuildControl
           key={ctrl.type}
-          type={ctrl.type}
+          // type={ctrl.type}
           label={ctrl.type}
           added={() => {
             props.ingredientAdded(ctrl.type);

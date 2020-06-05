@@ -1,12 +1,20 @@
 import * as actionTypes from "../actions/actionTypes";
 
-const initialState = {
+type Order = { price: number; title: string };
+
+type State = {
+  orders: Array<Order>; // Order[]
+  loading: boolean;
+  purchased: boolean;
+};
+
+const initialState: State = {
   orders: [],
   loading: false,
   purchased: false,
 };
 
-const reducer = (oldState = initialState, action) => {
+const reducer = (oldState: State = initialState, action: any): State => {
   switch (action.type) {
     case actionTypes.PURCHASE_INIT:
       return { ...oldState, purchased: false };

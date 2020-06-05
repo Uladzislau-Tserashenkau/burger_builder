@@ -1,7 +1,14 @@
 import React from "react";
 import "./BuildControl.scss";
 
-const BuildControl = (props) => {
+type Props = {
+  label: String;
+  removed: () => void;
+  disabled: boolean;
+  added: () => void;
+};
+
+const BuildControl = (props: Props): JSX.Element => {
   return (
     <div className={"build-control"}>
       <div className={"build-control__label"}>{props.label}</div>

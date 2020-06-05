@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import * as actions from "../../store/actions/index";
 import axios from "../../axios-orders";
 import withErrorHandler from "../../hoc/withErrorHandler";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Aux from "../../hoc/ax";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
