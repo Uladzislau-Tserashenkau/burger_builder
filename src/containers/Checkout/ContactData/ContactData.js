@@ -4,7 +4,7 @@ import Input from "../../../components/UI/Input/Input";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Button from "../../../components/UI/Button/Button";
 import axios from "../../../axios-orders";
-import classes from "./ContactData.module.css";
+import "./ContactData.scss";
 import withErrorHandler from "../../../hoc/withErrorHandler";
 import * as actions from "../../../store/actions/index";
 
@@ -161,7 +161,7 @@ const ContactData = (props) => {
     form = <Spinner />;
   }
   return (
-    <div className={classes.ContactData}>
+    <div className={"contact-data"}>
       <h4>Enter your contact data</h4>
       {form}
     </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { connect } from "react-redux";
-import classes from "./Auth.module.css";
+import "./Auth.scss";
 import Button from "../../components/UI/Button/Button";
 import Input from "../../components/UI/Input/Input";
 import * as actions from "../../store/actions/index";
@@ -123,7 +123,7 @@ const Auth = (props) => {
   }
 
   return (
-    <div className={classes.Auth}>
+    <div className={"auth"}>
       {authRedirect}
       {errorMessage}
       <form onSubmit={submitHandler}>

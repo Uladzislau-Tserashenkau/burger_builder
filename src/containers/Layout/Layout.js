@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Aux from "../../hoc/ax";
-import classes from "./Layout.module.css";
+import "./Layout.scss";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 import { connect } from "react-redux";
@@ -27,7 +27,7 @@ const Layout = (props) => {
         closed={sideDrawerCloseHandler}
         open={sideDrawerVisible}
       />
-      <main className={classes.top_content}>{props.children}</main>
+      <main className={"with-margin"}>{props.children}</main>
     </Aux>
   );
 };
