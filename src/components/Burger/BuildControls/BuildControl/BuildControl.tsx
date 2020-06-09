@@ -8,7 +8,7 @@ type Props = {
   added: () => void;
 };
 
-const BuildControl = (props: Props): JSX.Element => {
+const BuildControl = (props: Props) => {
   return (
     <div className={"build-control"}>
       <div className={"build-control__label"}>{props.label}</div>
