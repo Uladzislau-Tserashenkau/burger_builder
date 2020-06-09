@@ -5,7 +5,7 @@
   margin: 5px 0;
 }
 
-.button {
+.ctrl-button {
   display: block;
   font: inherit;
   padding: 5px;
@@ -29,14 +29,14 @@
   }
 }
 
-.label {
+.build-control__label {
   text-transform: capitalize;
   padding: 10px;
   font-weight: bold;
   width: 80px;
 }
 
-.button_less {
+.ctrl-button_less {
   background-color: #d39952;
   color: white;
   &:hover,
@@ -46,7 +46,7 @@
   }
 }
 
-.button_more {
+.ctrl-button_more {
   background-color: #8f5e1e;
   color: white;
   &:hover,
