@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Order.module.css";
+import "./Order.scss";
 
 const Order = (props) => {
   const ingredients = [];
@@ -27,7 +27,7 @@ const Order = (props) => {
   });
 
   return (
-    <div className={classes.Order}>
+    <div className={"order"}>
       <p>Ingredients: {ingredientOutput}</p>
       <p>
         Price: <strong>USD {props.price}</strong>
