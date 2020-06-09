@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./BurgerIngredient.module.css";
+import "./BurgerIngredient.scss";
 import PropTypes from "prop-types";
 
 const burgerIngerdient = (props) => {
@@ -7,27 +7,27 @@ const burgerIngerdient = (props) => {
 
   switch (props.type) {
     case "bread-bottom":
-      ingredient = <div className={classes.BreadBottom}></div>;
+      ingredient = <div className={"burger_bread-bottom"}></div>;
       break;
     case "bread-top":
       ingredient = (
-        <div className={classes.BreadTop}>
-          <div className={classes.Seeds1}></div>
-          <div className={classes.Seeds2}></div>
+        <div className={"burger_bread-top"}>
+          <div className={"burger_seeds1"}></div>
+          <div className={"burger_seeds2"}></div>
         </div>
       );
       break;
     case "meat":
-      ingredient = <div className={classes.Meat}></div>;
+      ingredient = <div className={"burger_meat"}></div>;
       break;
     case "cheese":
-      ingredient = <div className={classes.Cheese}></div>;
+      ingredient = <div className={"burger_cheese"}></div>;
       break;
     case "bacon":
-      ingredient = <div className={classes.Bacon}></div>;
+      ingredient = <div className={"burger_bacon"}></div>;
       break;
     case "salad":
-      ingredient = <div className={classes.Salad}></div>;
+      ingredient = <div className={"burger_salad"}></div>;
       break;
     default:
       ingredient = null;
