@@ -1,11 +1,11 @@
 import React from "react";
 import burgerLogo from "../../assets/images/logo.png";
-import classes from "./Logo.module.css";
+import "./Logo.scss";
 
 const logo = () => {
   return (
-    <div className={classes.Logo}>
-      <img src={burgerLogo} alt="logo" />
+    <div className={"logo"}>
+      <img className={"logo__img"} src={burgerLogo} alt="logo" />
     </div>
   );
 };
