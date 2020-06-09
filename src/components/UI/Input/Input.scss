@@ -1,25 +1,25 @@
-.Input {
+.user-input {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
+
+  &__label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+  }
 }
 
-.Label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.Invalid {
+.user-input__field_invalid {
   background-color: salmon !important;
   border: 1px solid darkred !important;
+
+  &::placeholder {
+    color: #fff;
+  }
 }
 
-.Invalid::placeholder {
-  color: #fff;
-}
-
-.InputElement {
+.user-input__field {
   outline: none;
   border: 1px solid #ccc;
   background-color: #fff;
@@ -28,9 +28,9 @@
   display: block;
   width: 100%;
   box-sizing: border-box;
-}
 
-.InputElement:focus {
-  outline: none;
-  background-color: #ccc;
+  &:focus {
+    outline: none;
+    background-color: #ccc;
+  }
 }
