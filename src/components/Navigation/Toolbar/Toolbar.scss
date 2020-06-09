@@ -1,4 +1,4 @@
-.Toolbar {
+.toolbar {
   height: 56px;
   width: 100%;
   position: fixed;
@@ -11,18 +11,15 @@
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 90;
-}
 
-.Toolbar nav {
-  height: 100%;
-}
+  &__logo {
+    height: 80%;
+  }
 
-.Logo {
-  height: 80%;
-}
-
-@media (max-width: 499px) {
-  .DesktopOnly {
-    display: none;
+  &__nav {
+    height: 100%;
+    @media (max-width: 499px) {
+      display: none;
+    }
   }
 }
