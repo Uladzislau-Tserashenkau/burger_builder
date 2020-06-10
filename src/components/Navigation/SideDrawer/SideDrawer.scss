@@ -21,11 +21,11 @@
     margin-bottom: 32px;
   }
 
-  &_open {
+  &--open {
     transform: translate(0);
   }
 
-  &_close {
+  &--close {
     transform: translate(-100%);
   }
 }

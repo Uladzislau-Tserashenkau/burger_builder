@@ -8,29 +8,29 @@
     display: block;
     margin-bottom: 8px;
   }
-}
 
-.user-input__field_invalid {
-  background-color: salmon !important;
-  border: 1px solid darkred !important;
-
-  &::placeholder {
-    color: #fff;
-  }
-}
-
-.user-input__field {
-  outline: none;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  font: inherit;
-  padding: 6px 10px;
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-
-  &:focus {
+  &__field {
     outline: none;
-    background-color: #ccc;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      background-color: #ccc;
+    }
+  }
+
+  &__field_invalid {
+    background-color: salmon !important;
+    border: 1px solid darkred !important;
+
+    &::placeholder {
+      color: #fff;
+    }
   }
 }

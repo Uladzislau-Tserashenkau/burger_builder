@@ -21,7 +21,7 @@
 
     &:hover,
     &:active,
-    &_active {
+    &--active {
       color: #40a4c8;
       @media (min-width: 500px) {
         background-color: #8f5c2c;
